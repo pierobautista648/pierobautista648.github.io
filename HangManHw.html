@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<title>HangMan</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
+
+</head>
+
+<body background="https://cdn.vox-cdn.com/thumbor/X6MKy-8PT6-DlqDumXCMGURJ-Ts=/0x80:2039x1609/1220x813/filters:focal(0x80:2039x1609):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/35120246/153128646.0.jpg">
+
+	<h2 class="text-center title text-white bg-dark">Guess the VEGETABLE! Press a letter to start</h2>
+	<h2 id="word" class="text-center text-white bg-dark jumbotron"> </h2>
+	<h2 id="guesses" class="text-white bg-dark text-center"> </h2>
+	<p id="lives" class="text-white bg-dark text-center"></p>
+	<script>
+		//ARRAY
+		var vegetables = ["artichoke", "asparagus", "broccoli", "cabbage", "cauliflower", "zucchini", "eggplant", "celery", "tomato"];
+		var currentWord = vegetables[Math.floor(Math.random() * vegetables.length)];
+		var index = 0;
+		live = 10;
+		var kek = document.getElementById("word");
+		var guessedLetters = [];
+		// Changes randomly generated word into "__"
+		function updateScore() {
+			document.getElementById("lives").innerHTML = "Guesses Left: " + live;
+		}
+		updateScore();
+
+		for (var i = 0; i < currentWord.length; i++) {
+			guessedLetters[i] = "_";
+		};
+
+		var lettersLeft = vegetables.length;
+
+		document.onkeyup = function (event) {
+
+
+
+
+			var kek = document.getElementById("word");
+			kek.innerHTML = guessedLetters.join(" ");
+
+			var wut = document.getElementById("lives");
+
+			var letter = String.fromCharCode(event.which).toLowerCase();
+
+			for (var j = 0; j < currentWord.length; j++) {
+				if (currentWord[j] === letter) {
+					guessedLetters[j] = letter;
+					lettersLeft--;
+				}
+				else if (live--);
+
+				// the lives go down per each wrong letter in the for loop so it doesnt work properly
+			};
+
+			kek.innerHTML = guessedLetters.join(" ");
+
+			// just have to implement the score going down into the loop so each incorrect goes into live-- so score goes down
+
+			//show which letter was incorrect
+
+			//-----------can't put this part on until lives/ score is fixed-----------|	
+			//if (live <= 0) {													      |
+			//	alert("you Lost");													  |			
+			//};																	  |
+			//------------------------------------------------------------------------|
+			updateScore();
+			// YOU WIN part, then tell the game to reset and do another game
+
+
+		};
+
+
+
+
+
+	</script>
+
+
+
+</body>
+
+</html>
